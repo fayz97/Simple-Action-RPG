@@ -11,6 +11,8 @@ enum {
 	ATTACK
 }
 
+signal player_die
+
 var state = MOVE
 var velocity: Vector2 = Vector2.ZERO
 var roll_vector = Vector2.DOWN
@@ -21,6 +23,7 @@ onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitboxPivot/SwordHitbox
 onready var hurtBox = $Hurtbox
+onready var hurtSound = $HurtSound
 
 func _ready() -> void:
 	stats.connect("no_health", self, "queue_free")
@@ -83,6 +86,9 @@ func roll_animation_finished():
 	state = MOVE
 
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
+	hurtSound.play()
 	stats.health -= 1
+	if stats.health <= 0:
+		emit_signal("player_die")
 	hurtBox.start_invincibility(0.5)
 	hurtBox.create_hit_effect()
