@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/PauseScreen.gd" type="Script" id=1]
+
+[node name="PauseScreen" type="Control"]
+pause_mode = 2
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -0.463287
+margin_right = 318.537
+margin_bottom = 179.0
+color = Color( 0.00784314, 0.00784314, 0.00784314, 0.219608 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseTitle" type="Label" parent="."]
+margin_top = 40.0
+margin_right = 320.0
+margin_bottom = 54.0
+text = "PAUSED"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 2.70633
+margin_top = 92.0
+margin_right = 323.706
+margin_bottom = 106.0
+text = "Press Enter key to continue"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
